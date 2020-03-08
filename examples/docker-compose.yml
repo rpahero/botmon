@@ -1,0 +1,46 @@
+version: '2'
+services:
+  botmon:
+    image: crystalyun/botmon
+    container_name: botmon
+    depends_on:
+      - influxdb
+    environment:
+      - POLLING_INTERVAL=10000
+      - ORC_TENANT_LOGICAL_NAME=
+      - ORC_ACCOUNT_LOGICAL_NAME=
+      - ORC_CLIENT_ID=
+      - ORC_USER_KEY=
+      - INFLUX_HOST=
+      - INFLUX_PORT=8086
+      - INFLUX_USERNAME=admin
+      - INFLUX_PASSORD=
+      - INFLUX_DB_NAME=botmon
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb-storage:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=botmon
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - 80:3000
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - /opt/grafana:/etc/grafana/provisioning
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=
+      - GF_SECURITY_ADMIN_PASSWORD=
+      - GF_SERVER_DOMAIN=
+volumes:
+  influxdb-storage:
+  grafana-storage:
