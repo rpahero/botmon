@@ -1,0 +1,21 @@
+{
+  "name": "botmon",
+  "version": "1.0.0",
+  "description": "Node.js Script for Monitoring UiPath Robots",
+  "author": "Crystal Yun <crystalyun92@gmail.com>",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rpahero/botmon.git"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "influx": "^5.5.1"
+  }
+}

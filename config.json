@@ -1,0 +1,25 @@
+{
+    "environment": {
+      "development": true
+    },
+    "orchestrator": {
+      "tokenRequestURL": "https://account.uipath.com/oauth/token",
+      "robotType": [
+        "Development",
+        "Unattended",
+        "Attended",
+        "NonProduction"
+      ]
+    },
+    "influxdb": {
+      "database": {
+        "time_precision": "ms",
+        "protocol": "line",
+        "batch_size": 10000,
+        "vmMeasurementLabel": "VMs",
+        "vmFieldValue": "Running",
+        "licenseMeasurementLabel": "Licenses",
+        "LicenseFieldValue": "true"
+      }
+    }
+  }
